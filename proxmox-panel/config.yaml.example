@@ -1,0 +1,22 @@
+# Proxmox panel configuration
+# Copy this file to config.yaml and fill in your own values.
+# config.yaml is gitignored so your token stays local.
+proxmox:
+  host: "192.168.0.11"        # Proxmox IP or hostname (no https://, no port)
+  port: 8006
+  node: "pxmx"                # node name as shown in the PVE sidebar
+  # API token: create in PVE UI -> Datacenter -> Permissions -> API Tokens
+  # (untick "Privilege Separation" or give the token PVEAuditor role on /)
+  token_id: "root@pam!data-disp"
+  token_secret: "REPLACE_WITH_YOUR_TOKEN_SECRET"
+  verify_ssl: false           # false for default self-signed PVE certs
+
+display:
+  com_port: "AUTO"
+  brightness: 25
+  refresh_seconds: 4
+
+panel:
+  # storage datastores to show (max 3); leave empty [] to auto-pick biggest
+  storages: []
+  max_guests: 9               # max VM/LXC rows in the list

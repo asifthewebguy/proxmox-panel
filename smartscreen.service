@@ -1,0 +1,14 @@
+[Unit]
+Description=UsbPCMonitor smart screen panel
+# Bind to the device so the service stops automatically on unplug
+BindsTo=dev-usbmonitor.device
+After=dev-usbmonitor.device network-online.target
+
+[Service]
+User=asifchowdhury
+ExecStart=/usr/local/bin/smartscreen-launch
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

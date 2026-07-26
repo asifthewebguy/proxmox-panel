@@ -1,0 +1,19 @@
+# Secrets — never commit real Proxmox API tokens
+proxmox-panel/config.yaml
+
+# Python virtualenv / caches
+venv/
+**/venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Env files
+.env
+*.env
+
+# Runtime logs
+*.log
+
+# OS cruft
+.DS_Store

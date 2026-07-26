@@ -1,0 +1,6 @@
+# UsbPCMonitor 3.5" smart screen (QinHeng 1a86:5722)
+# - Grants access without root
+# - Creates a stable /dev/usbmonitor symlink
+# - Auto-starts usbmonitor.service on plug-in (stops on unplug via BindsTo)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="5722", MODE="0666", SYMLINK+="usbmonitor", TAG+="systemd", ENV{SYSTEMD_WANTS}="smartscreen.service"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1a86", ATTR{idProduct}=="5722", MODE="0666"
