@@ -63,7 +63,10 @@ statuses, storage bars, live network throughput.
 
 1. Create an API token in the PVE UI: Datacenter → Permissions → API Tokens
    (untick "Privilege Separation", or grant the token the PVEAuditor role on `/`).
-2. Fill in `proxmox-panel/config.yaml` (host, node name, token).
+2. Copy the example config and fill in your values:
+   `cp proxmox-panel/config.yaml.example proxmox-panel/config.yaml`
+   (host, node name, token). The real `config.yaml` is gitignored so your
+   token never gets committed.
 3. Test without the display: `proxmox-panel/run-proxmox.sh --once` writes
    `test-frame.png` using live data — check it looks right.
 4. Run on the display: `proxmox-panel/run-proxmox.sh`
@@ -82,3 +85,17 @@ To choose what appears automatically on plug-in:
   `sudo usermod -aG dialout $USER` (Debian/Ubuntu) or `uucp` (Arch), then re-login.
 - Project troubleshooting wiki:
   https://github.com/mathoudebine/turing-smart-screen-python/wiki/Troubleshooting
+
+## Credits & License
+
+This repo bundles a vendored copy of
+[**turing-smart-screen-python**](https://github.com/mathoudebine/turing-smart-screen-python)
+by [@mathoudebine](https://github.com/mathoudebine) and contributors — the
+reverse-engineered driver that pushes images to the display. That project is
+licensed under the **GNU GPL v3.0**; its full license text is kept intact at
+[`turing-smart-screen-python/LICENSE`](turing-smart-screen-python/LICENSE).
+All credit for the display protocol and driver goes to that project.
+
+The original code in this repo (`proxmox-panel/`, the setup/service scripts,
+and the udev integration) is my own work. Because it is distributed together
+with the GPLv3-licensed driver, treat the combined work as **GPLv3**.
